@@ -260,6 +260,7 @@ export default Component.extend({
     });
     editor.cursorDidChange(() => {
       if (this.isDestroyed) { return; }
+      if (editor.hasCursor()) this.send('cancelLink');
       join(() => {
         this.cursorDidChange(editor);
       });
